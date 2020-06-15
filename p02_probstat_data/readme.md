@@ -1,12 +1,8 @@
-# Part 2: Problem Statement &  Dataset
+# Part 2: Problem Statement &  Dataset Information
 
 ## Overview
 
 This section elaborates on the project chosen, problem statement,  the goal of the model, and the data used to explore that model.
-
-## Project Choice
-
-I selected topic 3 (Global Terrorism) as my capstone. 
 
 ## Problem Statement
 
@@ -26,7 +22,7 @@ Data source: The Global Terrorism Database (GTD) is an open-source database on t
 
 **Proposed Solution:** 
 
-- A machine learning model will be build to classify suicide (alternative knife; subject to tailor as more insights uncovered with EDA) attacks. At this point of time, the proportion of class of interest is expected to be imbalanced; therefore, the guiding metric would be **F1** score and **area under the ROC curve**. The model will be benchmarked against the baseline of class proportion. Having utilized NLP techniques to build text classification models in Project 3(Web API and classification of Subreddit posts), I intend to explore other NLP tools and techniques such as spaCy and Topic Modeling.  I will also use Latent Dirichlet Allocation (LDA to uncover) insights regarding the topics of the terrorist's motive and (LDA) model to classify terrorist attack modes based on a provided motive input.
+- A machine learning model will be build to classify suicide (alternative knife; subject to tailor as more insights uncovered with EDA) attacks. At this point of time, the proportion of class of interest is expected to be imbalanced; therefore, the guiding metric would be **F1** score and **area under the ROC curve**. The model will be benchmarked against the baseline of class proportion. Having utilized NLP techniques to build text classification models in Project 3(Web API and classification of Subreddit posts), I intend to explore other NLP tools and techniques such as spaCy and Topic Modeling.  I will also use Latent Dirichlet Allocation (LDA to uncover) insights regarding the topics of the terrorist's motive and (LDA) model to classify terrorist attack modes based on a provided motive input, if possible.
 
 - I will also review and propose recommendations on: 
   1. the features that influences the model's classifications for further fine-tuning of model
@@ -38,13 +34,15 @@ Data source: The Global Terrorism Database (GTD) is an open-source database on t
 - Considering the legacy and context of records, it is foreseen that there may be numerous missing or empty entries where data is simply not available.
 - Care must be exercised in interpretation of trends over time; Global patterns are driven by diverse trends in particular regions, and data collection is influenced by fluctuations in access to media coverage over both time and place.
 
-**Project technical readiness assessment:** A classifier model is assessed to be feasible within the time constraints (3 weeks.) The use of neural networks as a classifier model is considered and at this stage, set as a stretch goal.
+**Project technical readiness assessment:** A classifier model is assessed to be feasible within the time constraints (3 weeks.) 
 
 ------
 
-## Data Cleaning & EDA notes 
+## Data Set Information
 
 **Observations from the GTD codebook (data dictionary)​ :book:**
+
+- Salient points regarding the structure and organization of the GTD are recorded below.
 
 - <u>Terrorism incidents excluded from GTD</u>. These data were lost prior to START’s compilation of the GTD from multiple data collection efforts. Due to the challenges of retrospective data collection for events of more than 25 years ago, recollected 1993 incidences accounts for only 15% of estimated attacks. Therefore, they were dropped entirely to prevent users from misinterpreting the low frequency in 1993. 
 
@@ -61,6 +59,8 @@ Data source: The Global Terrorism Database (GTD) is an open-source database on t
   Information must be documented by at least one high-quality source to be recorded in the GTD.
 
 - <u>Automated classification implemented in 2012.</u> The dramatic increase in the total number of worldwide terrorist attacks over 2011 likely reflects a **combined effect** of recent patterns of terrorism and automated data collection approaches. The exponential increase of available source materials has allowed for the collection of more comprehensive data on terrorism than any previous effort. 
+
+- Additional information of terrorism incident definition is recorded in Annex A.
 
 ---
 

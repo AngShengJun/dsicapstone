@@ -1,4 +1,4 @@
-# Data Cleaning & EDA
+# Part 3: Data Cleaning & EDA
 
 ## Overview
 
@@ -6,11 +6,9 @@ This section discusses findings from data cleaning and EDA
 
 ---
 
-## Findings
+## **Data cleaning** 
 
-**Data cleaning**
-
-The GTD us encoded using ISO-8859-1 format. It consists of terrorist incidences dated 1970 to 2017. There are 181,691 observations and 135 features.
+The GTD is encoded using ISO-8859-1 format. It consists of terrorist incidences dated 1970 to 2017. There are 181,691 observations and 135 features.
 
 Treatment on missing values: 
 
@@ -20,7 +18,7 @@ Treatment on missing values:
 - Column names were shortened
 - Textual data (except names of Country, Region and terrorist group names) were lowercased and shortened for brevity, where applicable.
 
-**Data dictionary for cleaned data**
+## **Data dictionary for cleaned data**
 
 - | Column name/ Datatype                     | Explanation                                                  |
   | :---------------------------------------- | ------------------------------------------------------------ |
@@ -39,66 +37,42 @@ Treatment on missing values:
   | **nkill, nwound** [integer]               | Number of fatalities, Number of wounded from incident.       |
   | **property** [integer]                    | Categorical variable. Coded “Yes” if there is evidence of property damage from the incident. <br/>**1** : Yes<br/> **0** :  No |
 
-**EDA**
+## **EDA** :bar_chart:
 
-Prelim thoughts for EDA
+- How have terrorist incidence varied over the years?
+>A: Sharp increase in incident counts from 2012 onwards (new automated data collection, increased data source connectivity and terrorism trends). Incidences peak in 2014-2015. Highest casualties in 2001 (Sep 11 by AQ).
+- Which groups inflicted most casualties?
+>A: 3062 groups recorded in dataset. In terms of highest wounded by individual incidents, AQ has highest (16,000 wounded; Sep 11) followed by Aum ShirinKyo (5,500 wounded; release of sarin in metro).  
+>A: Top 5 most active groups: taliban, isil, sl, boko haram, al-shabaab. Emerging in 2015, isil has highest activity rate.
+>A: Top 5 groups inflicted highest casaulties: isil, taliban, AQ, boko haram, ltte.
+- How have the attack modes evolved over time? Which attack mode account for highest casualties? Have target choice changed over the years? Which attack mode has highest successes?
+>A: isil favored bombing, AQ conducted the least incidents, but accounted for high casualties through Sep 11. There does not appear to be a fundamental shift in the general modes of attacks over the years. Bombing remains the favoured tactic, followed closely by armed assault and kidnapping in more recent years. Bombing accounts for highest casualties (total); hijacking accounts for highest average casualties.
+>A: General populace and property remained top target of choice regardless of the years.
+>A: Little publicized nuclear-related incidents (10 incidents in Japan by unknown perpetrator)
+>A: In general, all attackmodes has more successes than failures. By proportion, since bombing has highest proportion, it also has the highest number of successes. 
+- Which countries/region are the most targeted?
+>A: Incidents mostly centered regions: South Asia, the Middle East & North Africa, Sub-Saharan Africa and SouthEast Asia. South Asia increasingly accounted for 50% of total yearly incidences since 2003 (due to taliban, maoist groups)
+>A: Pakistan, Afgan, India, Colombia and Peru are top 5 most targeted. 
+- What motives drive the tactics of terror groups?
 
-- Visually explore the dataset for insights:
-  - Which countries/region are the most targeted?
-  - Which countries/region have most casualties?
-  - How have the casualties changed over time?
-  - How have the mode of attacks evolved over time?
-  - Are countries more adapt at countering certain mode of attacks?
+>A: Combination of several pre-disposing factors such as social as well as ideological goals motivates terror groups. A common underlying theme is sectarian violence.
 
+- Using spaCy dependency visualization, we can see that the motive words is generally structured as follows:
 
+  > 1. Context (describes if part of series of events with source citation. If unknown, sources for hypothesis is stated.
+  > 2. Group name (either claimed or identified by sources)/
+  > 3. Goal of attack.
+  > 4. Further sources or information to support context.
 
-------
-
-## Annex B (For Reference)
-
-## Data Guidelines
-
-What should you thinking about and looking for as you collect your capstone data?
-
-- Source and format your data
-  - Create a data dictionary to accompany your data.
-- Perform initial cleaning and munging.
-  - Organize your data relevant to your project goals.
-  - Write functions to automatically clean and munge data as necessary.
-  - Take copious notes, for both others and yourself, describing your assumptions and approach.
-
-
-## EDA Guidelines
-
-Think about the following as you perform your initial EDA.
-
-- Identify the data types you are working with.
-- Examine and summarize the distributions of your data, numerically and/or visually.
-- Identify outliers.
-- Identify missing data and look for patterns of missing data.
-- Describe how your EDA will inform your modeling decisions and process.
-
-### BONUS
-
-- Create roadmap of your project with milestones.
-- Write a blog post on what you learned from your EDA (pending github posting upon graduation).
-
-## Useful Resources
-
-- [Best practices for data documentation](https://www.dataone.org/all-best-practices)
-- [Describing data visually](http://www.statisticsviews.com/details/feature/6314441/Visualising-Statistics-The-importance-of-seeing-not-just-describing-data.html)
-- [WSJ Guide to Information Graphics (book)](https://www.amazon.com/Street-Journal-Guide-Information-Graphics/dp/0393347281)
-- [Storytelling with Data (book)](https://www.amazon.com/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257/)
+## Add the findings here: <TADA!!!>:dart:
 
 ------
 
-Capstone-Check-in pointers
+## Annex B (For Further work)
 
-1. Do you have data fully in hand and if not, what blockers are you facing?
-2. Have you done a full EDA on all of your data?
-3. Have you begun the modeling process? How accurate are your predictions so far?
-4. What blockers are you facing, including processing power, data acquisition, modeling difficulties, data cleaning, etc.? How can we help you overcome those challenges?
-5. Have you changed topics since your lightning talk? Since you submitted your Problem Statement and EDA? If so, do you have the necessary data in hand (and the requisite EDA completed) to continue moving forward?
-6. What is your timeline for the next week and a half? What do you _have_ to get done versus what would you _like_ to get done?
-7. What topics do you want to discuss during your 1:1?
+- Blog post on what you learned from your EDA (pending github posting upon graduation).
+
+------
+
+
 

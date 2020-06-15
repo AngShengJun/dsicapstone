@@ -1,22 +1,56 @@
-# Part 4
+# Part 4: Modeling, Evaluation & Recommendations
 
 ## Overview
 
-Data science requires clean data, logical study design, and reproducible results. The best way to do this (and build your portfolio) is to get in the habit of fully documenting your work for your peers and colleagues.
+On the building of classifier models, several were explored and their performance measures were reported below:
 
-In Part 4 you'll assemble a GitHub repo with your full analysis, results and reporting.  Your notebook(s) should be written in a straightforward manner, with concisely commented code, documented procedures and reasoning, and logical analysis. Where applicable, include clearly labeled plots, graphs, and other visualizations, explaining any outliers and relationships between features and data.  Walk us through each portion of your notebook, step by step.
+| Metrics                 | LogReg | KNN   | DecisionTree | RandForest* | GradientBoost | XGB   |
+| ----------------------- | ------ | ----- | ------------ | ----------- | ------------- | ----- |
+| **accuracy (validate)** | 0.945  | 0.933 | 0.799        | 0.856       | 0.910         | 0.908 |
+| **sensitivity**         | 0      | 0.088 | 0.672        | 0.657       | 0.226         | 0.270 |
+| **precision**           | 0      | 0.300 | 0.161        | 0.217       | 0.196         | 0.213 |
+| **F1**                  | NaN    | 0.122 | 0.261        | 0.326       | 0.210         | 0.238 |
+| **roc_auc**             | 0.791  | 0.672 | 0.774        | 0.862       | 0.837         | 0.849 |
 
-You should also include a brief "executive summary" that includes your problems statement, a description of your analysis and your key takeaways and results.  Data science reporting is technical, but don’t forget that your approach should tell us a compelling story about your data.
+*RandForest (undersampling + oversampling), other models (oversampling)
 
-> Your problem statement is critical! Do not leave this out! Also, make sure your key-metrics are tied to every milestone within your findings.
+As the proportion of wnv  to none wnv is approx. 5%-95%, this is an imbalanced class problem. The team utilized resampling techniques (SMOTE) to mitigate imbalanced class for machine learning. F1 score and ROC_AUC are used to evaluate the best model. The team picked both the Randforest and XGBoost models as the production model for Kaggle submissions.
 
-Include any additional code, data, or other materials as appendices in your notebook or separate files, as needed. Above all, your process descriptions should be concise and relevant to your goals.
+The returned Kaggle (Public scores):
 
-_Goal_: A fully documented repository for technical stakeholders.
+- XGBoost (Undersampling SMOTE): 0.74579
+
+- RandomForest (Oversampling and Undersampling SMOTE): 0.73774
+
+  The team further explored Undersampling and Oversampling (SMOTE) with XGBoost classifier.
+
+The resulting scores are:
+
+| Metrics          | Random Forest (Under + Oversample SMOTE) | XGBoost (Under + Oversample SMOTE) |
+| ---------------- | ---------------------------------------- | ---------------------------------- |
+| **roc_auc(val)** | 0.856                                    | 0.846                              |
+| **sensitivity**  | 0.657                                    | 0.613                              |
+| **precision**    | 0.217                                    | 0.196                              |
+| **F1**           | 0.326                                    | 0.297                              |
+| **roc_auc**      | 0.862                                    | 0.855                              |
+
+With combination of Oversample and Undersample on the XGBoost classifier, 
+
+the Kaggle (Public score) improved: **0.75410**
+
+**<u>Recommendations and Way Forward.</u>**
+
+Pesticide deployment: To improve cost-effectiveness of pesticide deployment, the proposed recommendations relies on timing and coverage area:
+
+1. Spraying should be focused in the months of Jun to Jul (periods of high rainfall), and targeted at region of traps (see presentation slides) with high wnv as a start.
+
+2. Moving forwards, the deployment should be tailored accordingly to match rainfall patterns; mosquito population generally spike 2 weeks after heavy rainfall.
+
+3. The classifier model could be used to provide insights to areas for targeted spraying in the longer term, as new data on wnv clusters, and weather data is available.
 
 ---
 
-## Requirements
+## Annex Guide
 
 1. An executive summary:
   - What is your goal?
