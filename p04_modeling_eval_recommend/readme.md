@@ -123,5 +123,7 @@ When I started out on this project, incorporating LDA into the model workflow wa
 
 Thanks for reading, and hopefully, the work has provided you some ideas on how best to tackle your own NLP project. I believe in paying it forward; the code hosted on github is intended to be shared and remixed. I appreciate attribution for the usage of the codes.
 
+[Back to overview](https://github.com/AngShengJun/dsicapstone)
+
 ---
 

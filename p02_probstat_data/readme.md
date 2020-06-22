@@ -66,6 +66,8 @@ Data source: The Global Terrorism Database (GTD) is an open-source database on t
 
 - Additional information of terrorism incident definition is recorded in Annex A.
 
+  ​																																											[Next](https://github.com/AngShengJun/dsicapstone/tree/master/p03_dataclean_eda)
+
 ---
 
 ## Annex A (Literature Review)

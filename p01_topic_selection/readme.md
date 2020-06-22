@@ -16,7 +16,7 @@ Topics initially considered were on image classification, reason being I would l
 
 4. U.S. Traffic Accident Database (Kaggle dataset); insights from accident dataset :car: may help uncover exacerbating factors leading to accidents, such as weather, road conditions or low light conditions. A machine learning could help predict and classify severity of accident, given a set of conditions. Insights from EDA and model predictions could be used to help authorities to enhance road safety by road re-design, etc.
 
-   
+   ​																																											[Next](https://github.com/AngShengJun/dsicapstone/tree/master/p02_probstat_data)
 
 ---
 
