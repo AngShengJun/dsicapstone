@@ -65,7 +65,15 @@ Treatment on missing values:
 >![Fig5](https://github.com/AngShengJun/dsicapstone/blob/master/misc/5.jpg)
 >
 >A: General populace and property remained top target of choice regardless of the years. (Fig.4.3, 4.4)
+>
+>![Fig4.3](https://github.com/AngShengJun/dsicapstone/blob/master/misc/4.3.jpg)
+>
+>![Fig4.4](https://github.com/AngShengJun/dsicapstone/blob/master/misc/4.4.jpg)
+>
 >A: Little publicized nuclear-related incidents (10 incidents in Japan by unknown perpetrator). I did not manage to uncover any further details regarding these incidents. (Fig.4.5)
+>
+>![Fig4.5](https://github.com/AngShengJun/dsicapstone/blob/master/misc/4.5.jpg)
+>
 >A: In general, all attackmodes has more successes than failures. By proportion, since bombing has highest proportion, it also has the highest number of successes. (Fig.6 )
 >
 >![Fig6](https://github.com/AngShengJun/dsicapstone/blob/master/misc/6.jpg)
