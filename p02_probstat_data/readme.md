@@ -18,6 +18,10 @@ This section elaborates on the project chosen, problem statement,  the goal of t
 
 The Counter-Terrorism Agency (CTA) :office: is collaborating with the National Consortium for the Study of Terrorism and Responses to Terrorism (START) . START has compiled a database of terrorist attacks from 1970s to more recent years. As a member of the data science team, we hope to derive insights from the database that could help us better understand the perpetrator's motives, modulus operandi for CTA's preemptive strategies (CTA management, intelligence community and field operatives).
 
+Illustration of Global Terror Incidents year 2000-2017
+
+![Gif](https://github.com/AngShengJun/dsicapstone/blob/master/misc/output_hMJYEE.gif)
+
 Data source: The Global Terrorism Database (GTD) is an open-source database on terrorist attacks around the world from 1970 through 2017. It includes both domestic and international terrorist incidents, and more than 100 variables on the location, tactics, perpetrators, targets, and outcomes. The database is maintained by the "National Consortium for the Study of Terrorism and Responses to Terrorism (START), University of Maryland. (2018). Link for database: https://www.kaggle.com/START-UMD/gtd
 
 **Proposed Solution:** 

@@ -69,7 +69,11 @@ In the next part, topic modeling is discussed.
 
 ## Topic Modeling
 
-Topic modelling was conducted on the train data set. The optimum number of topics was determined to be 42 topics, based on the coherence value to topics plot. An LDA model is trained using the train data. From here, 
+Topic modelling was conducted on the train data set. The optimum number of topics was determined to be 42 topics, based on the coherence value to topics plot. 
+
+![Fig11](https://github.com/AngShengJun/dsicapstone/blob/master/misc/11.jpg)
+
+An LDA model is trained using the train data. From here, 
 
 1. The probability distributions of the topics are then used as feature vectors in the Logistic Regression model for binary classification (bomb vs. non-bomb) on the validate data set. 
 2. Thereafter, the trained LDA model is used to derive probability distributions of the topics from the test data. 
