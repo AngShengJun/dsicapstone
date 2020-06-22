@@ -7,7 +7,7 @@ Capstone READMEs are organized across subfolders to guide the readers. Project f
 - [Topic Selection](https://github.com/AngShengJun/dsicapstone/tree/master/p01_topic_selection) 
 - [Problem Statement & Dataset Information](https://github.com/AngShengJun/dsicapstone/tree/master/p02_probstat_data)
 - [Data Cleaning & EDA](https://github.com/AngShengJun/dsicapstone/tree/master/p03_dataclean_eda)
-- [Modeling, Evaluation & Recommendations]
+- [Modeling, Evaluation & Recommendations](https://github.com/AngShengJun/dsicapstone/tree/master/p04_modeling_eval_recommend)
 
 ---
 
@@ -28,8 +28,9 @@ Notebooks are arranged via following system: *1st digit . 2 digit . 3 digit*
   
 
   
+
 For example,
-  
+
   - notebook 5.0 represents the note book on Capstone, data cleaning, eda, etc.
   - notebook 5.1 represents the notebook on Capstone, Machine learning model building
 
