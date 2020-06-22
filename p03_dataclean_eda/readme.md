@@ -41,10 +41,14 @@ Treatment on missing values:
 
 - How have terrorist incidence varied over the years?
 >A: Sharp increase in incident counts from 2012 onwards (new automated data collection, increased data source connectivity and terrorism trends). Incidences peak in 2014-2015. Highest casualties in 2001 (Sep 11 by AQ).
+>
+>
 - Which groups inflicted most casualties?
 >A: 3062 groups recorded in dataset. In terms of highest wounded by individual incidents, AQ has highest (16,000 wounded; Sep 11) followed by Aum ShirinKyo (5,500 wounded; release of sarin in metro).  
 >A: Top 5 most active groups: taliban, isil, sl, boko haram, al-shabaab. Emerging in 2015, isil has highest activity rate.
 >A: Top 5 groups inflicted highest casaulties: isil, taliban, AQ, boko haram, ltte.
+>
+>
 - How have the attack modes evolved over time? Which attack mode account for highest casualties? Have target choice changed over the years? Which attack mode has highest successes?
 >A: isil favored bombing, AQ conducted the least incidents, but accounted for high casualties through Sep 11. There does not appear to be a fundamental shift in the general modes of attacks over the years. Bombing remains the favoured tactic, followed closely by armed assault and kidnapping in more recent years. Bombing accounts for highest casualties (total); hijacking accounts for highest average casualties.
 >A: General populace and property remained top target of choice regardless of the years.
@@ -64,13 +68,7 @@ Treatment on missing values:
   > 3. Goal of attack.
   > 4. Further sources or information to support context.
 
-## Add the findings here: <TADA!!!>:dart:
-
-------
-
-## Annex B (For Further work)
-
-- Blog post on what you learned from your EDA (pending github posting upon graduation).
+## 
 
 ------
 

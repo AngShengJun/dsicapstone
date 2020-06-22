@@ -2,117 +2,122 @@
 
 ## Overview
 
-On the building of classifier models, several were explored and their performance measures were reported below:
-
-| Metrics                 | LogReg | KNN   | DecisionTree | RandForest* | GradientBoost | XGB   |
-| ----------------------- | ------ | ----- | ------------ | ----------- | ------------- | ----- |
-| **accuracy (validate)** | 0.945  | 0.933 | 0.799        | 0.856       | 0.910         | 0.908 |
-| **sensitivity**         | 0      | 0.088 | 0.672        | 0.657       | 0.226         | 0.270 |
-| **precision**           | 0      | 0.300 | 0.161        | 0.217       | 0.196         | 0.213 |
-| **F1**                  | NaN    | 0.122 | 0.261        | 0.326       | 0.210         | 0.238 |
-| **roc_auc**             | 0.791  | 0.672 | 0.774        | 0.862       | 0.837         | 0.849 |
-
-*RandForest (undersampling + oversampling), other models (oversampling)
-
-As the proportion of wnv  to none wnv is approx. 5%-95%, this is an imbalanced class problem. The team utilized resampling techniques (SMOTE) to mitigate imbalanced class for machine learning. F1 score and ROC_AUC are used to evaluate the best model. The team picked both the Randforest and XGBoost models as the production model for Kaggle submissions.
-
-The returned Kaggle (Public scores):
-
-- XGBoost (Undersampling SMOTE): 0.74579
-
-- RandomForest (Oversampling and Undersampling SMOTE): 0.73774
-
-  The team further explored Undersampling and Oversampling (SMOTE) with XGBoost classifier.
-
-The resulting scores are:
-
-| Metrics          | Random Forest (Under + Oversample SMOTE) | XGBoost (Under + Oversample SMOTE) |
-| ---------------- | ---------------------------------------- | ---------------------------------- |
-| **roc_auc(val)** | 0.856                                    | 0.846                              |
-| **sensitivity**  | 0.657                                    | 0.613                              |
-| **precision**    | 0.217                                    | 0.196                              |
-| **F1**           | 0.326                                    | 0.297                              |
-| **roc_auc**      | 0.862                                    | 0.855                              |
-
-With combination of Oversample and Undersample on the XGBoost classifier, 
-
-the Kaggle (Public score) improved: **0.75410**
-
-**<u>Recommendations and Way Forward.</u>**
-
-Pesticide deployment: To improve cost-effectiveness of pesticide deployment, the proposed recommendations relies on timing and coverage area:
-
-1. Spraying should be focused in the months of Jun to Jul (periods of high rainfall), and targeted at region of traps (see presentation slides) with high wnv as a start.
-
-2. Moving forwards, the deployment should be tailored accordingly to match rainfall patterns; mosquito population generally spike 2 weeks after heavy rainfall.
-
-3. The classifier model could be used to provide insights to areas for targeted spraying in the longer term, as new data on wnv clusters, and weather data is available.
+This section discusses the model workflow and findings from model evaluation.
 
 ---
 
-## Annex Guide
+## Model workflow & Evaluation Metrics
 
-1. An executive summary:
-  - What is your goal?
-  - Where did you get your data?
-  - What are your metrics?
-  - What were your findings?
-  - What risks/limitations/assumptions affect these findings?
-2. Summarize your statistical analysis, including:
-  - implementation
-  - evaluation
-  - inference
-3. Clearly document and label each section of your notebook(s)
-  - Logically organize your information in a persuasive, informative manner.
-  - Include notebook headers and subheaders, as well as clearly formatted markdown for all written components.
-  - Include graphs/plots/visualizations with clear labels.
-  - Comment and explain the purpose of each major section/subsection of your code.
-  - Document your code for your future self, as if another person needed to replicate your approach.
-4. Clearly document all of your decision points in the relevant sections
-  - How did you acquire your data?
-  - How did you transform or engineer your data?  Why?
-  - How did you select your model?
-  - How did you optimize hyperparameters?
-5. Host your notebook and any other materials in your own public Github Repository.
-  - You repo should have README file that guides us through the repository and links to important files.
-  - Include links and explanations to any outside libraries or source code used.
-  - Host a copy of your dataset or include a link to a remotely hosted version.
+- first split data into i) train and test set, then split the train set into train subsets and validate subsets.
 
-**BONUS**
+- only fit on the train set then score on validate set. (Similar principle applies on test set). 
 
-Create a blog post of at least 1000 words summarizing your approach in a tutorial format and link to it in your notebook.  In your tutorial, address a slightly less technical audience; think back to Day 1 of the program - how would you explain and walk through your capstone project to your earlier self?
+- evaluate model
 
-### Best Practices
+  This would prevent data leakage (inadvertent count vectorize (a transformer) the entire data before doing train-test-split).
 
-1. The README
-  - The README is the landing page of your repo.  
-  - It should start with a summary of what the repo contains and provide links to important files.
-  - Think of it as a table of contents for your repo.
-  - You should list the external libraries/packages that you use, especially if they are not standard (i.e., not part of the base Anaconda distribution.)
-  - If you wrote a blog about this project, link to it from your README.
-  - Include your website, twitter handle, etc., if you would like.
-2. Organizing your repo
-  - If you have multiple notebooks, start each filename with a number to assist in organization.
-  - Give you notebooks descriptive filenames.  For example,
-    - `1_Scraping.ipynb`
-    - `2_EDA.ipynb`
-    - `3_Model_Development.ipynb`
-  - Keep data files in a single folder off the "root" of the repo.
-  - Keep documentation/reports in a dedicated folder (like data).
-  - If you have any other resources (images or PDFs), keep them in a dedicated folder (called `assets`, for example.)
-3. Jupyter Notebooks
-  - Data science is a non-linear, iterative process, but your final notebook should contain a linear "narrative."
-  - Notebooks should be reproducible, which means that I will get the _same results_ as you did if I clone your repo and run your notebook.  Consider the following:
-    - Is your data stored in the repo or available via a link?
-    - If you use _any_ (_ANY_) random numbers anywhere, do you have a random seed so that you **always** get the same result?
-    - Is your notebook 100% free of runtime errors?
-    - In short, if I open your notebook and click "Cell -> Run All", will your notebook run completely, without errors and give me the same result _every_ time?
+The cost of a false negative is **higher** than false positive (potentially higher casualties); it is better that CT ops be more prepared in event of an actual bombing incident than be under-prepared. Therefore, the priority is to minimize false negatives**.
 
-## Necessary Deliverables / Submission
+Model metrics for evaluation:
+- `sensitivity` (reduce false negatives) AND
+- `ROC-AUC` (measures model's skill in classification)
 
-Your code and technical notebook should be posted to your **personal GitHub** (not **git.generalassemb.ly**) and linked to us no later than  _end of day, June 11, 2020_.
+---
 
-## Useful Resources
+## Model Evaluation
 
-- [How to Report Statistics to Technical Audiences](http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWstats.html)
-- [What is a good way for a data scientist to construct an online portfolio?](https://www.quora.com/What-is-a-good-way-for-a-data-scientist-to-construct-an-online-portfolio)
+The logistic regression and Naive Bayes models were explored and their performance measures were evaluated using train and validate data set: 
+
+| Metrics                 | Logistic Regression | Naive Bayes |
+| ----------------------- | ------------------- | ----------- |
+| **accuracy (validate)** | 0.6781              | 0.6593      |
+| **sensitivity**         | 0.8512              | 0.8246      |
+| **roc_auc**             | 0.7460              | 0.7272      |
+
+Prioritization is on correct classification of bomb attack mode as a misclassified actual bomb attack mode could lead to relatively more dire consequences (more casualties). In this regard, we would want to pick the model with highest True Positive Rate (sensitivity), for as much correct classification of the bomb attack modes as possible. Therefore, we pick the Logistic Regression model as the production model.
+
+Next, fit LR model on full train set, test on test set, review misclassified samples and then explore tuning the production model.
+
+---
+
+## Model Tuning & Findings :mag_right:
+
+On model tuning exploration, several means were explored:
+
+- removal of fifty words that contributed to false negative
+- removal of significant occurring overlap words (more than 1200 occurrences)
+
+Summary of model scores (Full train set on Test set)
+
+| Metrics         | LR model | LR model (50 false neg wrd removed) | LR model (sigfn ovrlap wrd removed) |
+| --------------- | -------- | ----------------------------------- | ----------------------------------- |
+| **accuracy**    | 0.6898   | 0.6859                              | 0.6841                              |
+| **sensitivity** | 0.8584   | 0.8610                              | 0.8597                              |
+| **roc_auc**     | 0.7622   | 0.7566                              | 0.7526                              |
+
+With remove of words contributing to false negatives, there is a marginal increase in sensitivity but at a cost to the roc_auc (trade-off between sensitivity and specificity). The removal of significantly occurring overlap words would not necessarily improve the model performance (sensitivity and roc_auc) as these words are also a dominant feature for the class 1 prediction, and there exists a variance between the proportion of overlap (higher proportion on positive bomb class). This means sensitivity could decrease with the removal of the words.
+
+## Recommendations (Part1)
+
+The Logistic Regression (LR) model performs better than the naive bayes model in terms of the sensitivity and roc_auc scores. In general, the LR production model versions has good sensitivity and roc_auc (priority is to minimize false negatives) above 85% and 75% respectively. False positive is not considered a high cost for CT, since they will be expecting an terror incident). Considering the sensitivity and roc_auc score, I propose the second logistic regression model (50 false negative words removed) as the finalized production model (best sensitivity score, with roc_auc above 75%. 
+
+The removal of common occurring words (between classes) that has low frequency is a common technique used for tuning model performance; however, from the distribution of word features between the two classes, this is assessed to be not suitable for this particular dataset.
+
+In the next part, topic modeling is discussed.  
+
+---
+
+## Topic Modeling
+
+Topic modelling was conducted on the train data set. The optimum number of topics was determined to be 42 topics, based on the coherence value to topics plot. An LDA model is trained using the train data. From here, 
+
+1. The probability distributions of the topics are then used as feature vectors in the Logistic Regression model for binary classification (bomb vs. non-bomb) on the validate data set. 
+2. Thereafter, the trained LDA model is used to derive probability distributions of the topics from the test data. 
+3. Run Logistic Regression model on these topic probability distributions, to see if model generalizes. 
+
+The results looks promising: 
+
+| Metrics         | Validate set | Test set |
+| --------------- | ------------ | -------- |
+| **accuracy**    | 0.5767       | 0.5958   |
+| **sensitivity** | 0.8004       | 0.7806   |
+| **roc_auc**     | 0.5957       | 0.6264   |
+
+
+
+Next, the  topic probability distributions are added to the count vectorized word features for both train and test dataset. The dataset is then run through the Logistic Regression model to determine overall model generalizability.
+
+| Metrics         | LR model | LR model (topic model vectors) | LR model (topic model + count vectorizer vectors) |
+| --------------- | -------- | ------------------------------ | ------------------------------------------------- |
+| **accuracy**    | 0.6859   | 0.5958                         | 0.5366                                            |
+| **sensitivity** | 0.8610   | 0.7806                         | 0.8577                                            |
+| **roc_auc**     | 0.7566   | 0.6264                         | 0.7060                                            |
+
+
+
+## Recommendations (Part2)
+
+From the model metric summaries, the model using topic distributions alone as feature vectors has the lowest performance scores (sensitivity and roc_auc). The addition of feature vectors from count vectorizer improved model sensitivity and roc_auc. Model generalizability using LDA topic distributions has been demonstrated, though the best performing model remains the production Logistic Regression model using count vectorized word features.
+
+The approach applied in this project could work in general, for similar NLP-based classifiers.
+
+---
+
+## Future Work :briefcase:
+
+Terrorism is a complex topic as it covers politics, psychology, philosophy, military strategy, etc. The current model is a very simplistic in that it classifies a terrorist attack mode as 'bomb' or 'non-bomb' based solely on one form of intel (motive text). Additional sources or forms of intel are not included, nor were political and social factors trends that could serve as supporting sources of intelligence.
+
+I aim to discuss more regarding my learning journey through this project and will update with the blog link shortly. 
+
+Here are a few areas that I would like to revisit for future project extensions:
+- source for additional data to widen perspective
+- feature engineer spatial and temporal aspects (e.g. attacks by region, attacks by decades)
+- explore model performance using Tfidf vectorizer and spaCy
+- explore other classification models (currently only 2 models explored; time allocated between studying the dataset variables, motive texts, longer than usual modeling times with the inherent size of the dataset, and research on topic modeling (LDA) and spaCy)
+
+When I started out on this project, incorporating LDA into the model workflow was on the drawing board, but not considered a firm decision. LDA is an unsupervised machine learning technique and it hadn't dawned upon me that it could be used to augment supervised machine learning. Andrew  Ng's work on LDA, and Marc Kelechava's sentiment prediction on yelp reviews using LDA technique provided the inspiration on the potential possibilities of LDA.
+
+Thanks for reading, and hopefully, the work has provided you some ideas on how best to tackle your own NLP project. I believe in paying it forward; the code hosted on github is intended to be shared and remixed. I appreciate attribution for the usage of the codes.
+
+---
+
