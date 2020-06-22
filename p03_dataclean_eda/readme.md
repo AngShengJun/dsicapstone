@@ -104,7 +104,7 @@ Treatment on missing values:
   
   
   
-  ​																																											[Next]https://github.com/AngShengJun/dsicapstone/tree/master/p04_modeling_eval_recommend)
+  ​																																											[Next](https://github.com/AngShengJun/dsicapstone/tree/master/p04_modeling_eval_recommend)
 
 ------
 
