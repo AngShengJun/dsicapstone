@@ -16,9 +16,10 @@ This section discusses the model workflow and findings from model evaluation.
 
   This would prevent data leakage (inadvertent count vectorize (a transformer) the entire data before doing train-test-split).
 
-The cost of a false negative is **higher** than false positive (potentially higher casualties); it is better that CT ops be more prepared in event of an actual bombing incident than be under-prepared. Therefore, the priority is to minimize false negatives**.
+The class balance between Bombing incidents and Non-Bombing incidents is relatively balanced (approx. 50%). The positive class (class of interest) is bombing incident.
 
-Model metrics for evaluation:
+The cost of a false negative is **higher** than false positive (potentially higher casualties); it is better that CT ops be more prepared in event of an actual bombing incident than be under-prepared. Therefore, the priority is to minimize false negatives**. Therefore, the model metrics for evaluation are:
+
 - `sensitivity` (reduce false negatives) AND
 - `ROC-AUC` (measures model's skill in classification)
 
@@ -31,7 +32,7 @@ The logistic regression and Naive Bayes models were explored and their performan
 | Metrics                 | Logistic Regression | Naive Bayes |
 | ----------------------- | ------------------- | ----------- |
 | **accuracy (validate)** | 0.6781              | 0.6593      |
-| **sensitivity**         | 0.8512              | 0.8246      |
+| **sensitivity**         | 0.8532              | 0.8246      |
 | **roc_auc**             | 0.7460              | 0.7272      |
 
 Prioritization is on correct classification of bomb attack mode as a misclassified actual bomb attack mode could lead to relatively more dire consequences (more casualties). In this regard, we would want to pick the model with highest True Positive Rate (sensitivity), for as much correct classification of the bomb attack modes as possible. Therefore, we pick the Logistic Regression model as the production model.
@@ -51,9 +52,9 @@ Summary of model scores (Full train set on Test set)
 
 | Metrics         | LR model | LR model (50 false neg wrd removed) | LR model (sigfn ovrlap wrd removed) |
 | --------------- | -------- | ----------------------------------- | ----------------------------------- |
-| **accuracy**    | 0.6898   | 0.6859                              | 0.6841                              |
-| **sensitivity** | 0.8584   | 0.8610                              | 0.8597                              |
-| **roc_auc**     | 0.7622   | 0.7566                              | 0.7526                              |
+| **accuracy**    | 0.6898   | 0.6859                              | 0.6802                              |
+| **sensitivity** | 0.8584   | 0.8619                              | 0.8526                              |
+| **roc_auc**     | 0.7620   | 0.7568                              | 0.7489                              |
 
 With remove of words contributing to false negatives, there is a marginal increase in sensitivity but at a cost to the roc_auc (trade-off between sensitivity and specificity). The removal of significantly occurring overlap words would not necessarily improve the model performance (sensitivity and roc_auc) as these words are also a dominant feature for the class 1 prediction, and there exists a variance between the proportion of overlap (higher proportion on positive bomb class). This means sensitivity could decrease with the removal of the words.
 
@@ -83,9 +84,9 @@ The results looks promising:
 
 | Metrics         | Validate set | Test set |
 | --------------- | ------------ | -------- |
-| **accuracy**    | 0.5767       | 0.5958   |
-| **sensitivity** | 0.8004       | 0.7806   |
-| **roc_auc**     | 0.5957       | 0.6264   |
+| **accuracy**    | 0.5820       | 0.6034   |
+| **sensitivity** | 0.8024       | 0.8106   |
+| **roc_auc**     | 0.6121       | 0.6374   |
 
 
 
@@ -93,15 +94,15 @@ Next, the  topic probability distributions are added to the count vectorized wor
 
 | Metrics         | LR model | LR model (topic model vectors) | LR model (topic model + count vectorizer vectors) |
 | --------------- | -------- | ------------------------------ | ------------------------------------------------- |
-| **accuracy**    | 0.6859   | 0.5958                         | 0.5366                                            |
-| **sensitivity** | 0.8610   | 0.7806                         | 0.8577                                            |
-| **roc_auc**     | 0.7566   | 0.6264                         | 0.7060                                            |
+| **accuracy**    | 0.6859   | 0.6034                         | 0.6893                                            |
+| **sensitivity** | 0.8619   | 0.8106                         | 0.8587                                            |
+| **roc_auc**     | 0.7568   | 0.6374                         | 0.7621                                            |
 
 
 
 ## Recommendations (Part2)
 
-From the model metric summaries, the model using topic distributions alone as feature vectors has the lowest performance scores (sensitivity and roc_auc). The addition of feature vectors from count vectorizer improved model sensitivity and roc_auc. Model generalizability using LDA topic distributions has been demonstrated, though the best performing model remains the production Logistic Regression model using count vectorized word features.
+From the model metric summaries, the model using topic distributions alone as feature vectors has the lowest performance scores (sensitivity and roc_auc). The addition of feature vectors from count vectorizer improved model sensitivity and roc_auc. Model generalizability using LDA topic distributions has been demonstrated, though the best performing model remains the production Logistic Regression model using count vectorized word features. Nevertheless, the results are encouraging, and more remains to be experimented upon (prelim thoughts are listed under future work).
 
 The approach applied in this project could work in general, for similar NLP-based classifiers.
 
@@ -121,7 +122,7 @@ Here are a few areas that I would like to revisit for future project extensions:
 
 When I started out on this project, incorporating LDA into the model workflow was on the drawing board, but not considered a firm decision. LDA is an unsupervised machine learning technique and it hadn't dawned upon me that it could be used to augment supervised machine learning. Andrew  Ng's work on LDA, and Marc Kelechava's sentiment prediction on yelp reviews using LDA technique provided the inspiration on the potential possibilities of LDA.
 
-Thanks for reading, and hopefully, the work has provided you some ideas on how best to tackle your own NLP project. I believe in paying it forward; the code hosted on github is intended to be shared and remixed. I appreciate attribution for the usage of the codes.
+Thanks for reading, and hopefully, the work has provided you some ideas on how best to tackle your own NLP project. I believe in paying it forward; the code hosted on github is intended to be shared and remixed. I appreciate attribution should you like to replicate the codes.
 
 [Back to overview](https://github.com/AngShengJun/dsicapstone)
 

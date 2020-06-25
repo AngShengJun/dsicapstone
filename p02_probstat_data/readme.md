@@ -6,7 +6,7 @@ This section elaborates on the project chosen, problem statement,  the goal of t
 
 ## Problem Statement
 
-**Context:** Terrorist attacks have led to loss of innocent lives and properties over the recent years. Though the threat from terrorism has somewhat abated with Covid-19 situation, it would be wise to be remain prepared and vigilant. Terrorism is defined as (further literature review are detailed in **Annex A**): 
+**Context:** Terrorist attacks have led to loss of innocent lives and properties over the years. Though the threat from terrorism has somewhat abated with Covid-19 situation, it would be wise to be remain prepared and vigilant. Terrorism is defined as (further literature review are detailed in **Annex A**): 
 
 > "The threatened or actual use of illegal force and violence by a non-state actor to attain a political, economic, religious, or social goal through fear, coercion, or intimidation." - Global Terrorism Database
 >
@@ -16,21 +16,26 @@ This section elaborates on the project chosen, problem statement,  the goal of t
 > - The incident must entail some level of violence or immediate threat of violence -(on property, people).
 > - The perpetrators of the incidents must be sub-national actors. GTD  does not include acts of state terrorism.
 
-The Counter-Terrorism Agency (CTA) :office: is collaborating with the National Consortium for the Study of Terrorism and Responses to Terrorism (START) . START has compiled a database of terrorist attacks from 1970s to more recent years. As a member of the data science team, we hope to derive insights from the database that could help us better understand the perpetrator's motives, modulus operandi for CTA's preemptive strategies (CTA management, intelligence community and field operatives).
+Counter terrorism relies on intelligence to foil terror incidents. However, the analysis of such intel data requires much manpower and training, and the amount of intel data collected has seen exponential growth with technological advancements over the years. 
 
 Illustration of Global Terror Incidents year 2000-2017
 
 ![Gif](https://github.com/AngShengJun/dsicapstone/blob/master/misc/output_hMJYEE.gif)
 
-Data source: The Global Terrorism Database (GTD) is an open-source database on terrorist attacks around the world from 1970 through 2017. It includes both domestic and international terrorist incidents, and more than 100 variables on the location, tactics, perpetrators, targets, and outcomes. The database is maintained by the "National Consortium for the Study of Terrorism and Responses to Terrorism (START), University of Maryland. (2018). Link for database: https://www.kaggle.com/START-UMD/gtd
-
 **Proposed Solution:** 
 
-- A machine learning model will be build to classify suicide (alternative knife; subject to tailor as more insights uncovered with EDA) attacks. At this point of time, the proportion of class of interest is expected to be imbalanced; therefore, the guiding metric would be **F1** score and **area under the ROC curve**. The model will be benchmarked against the baseline of class proportion. Having utilized NLP techniques to build text classification models in Project 3(Web API and classification of Subreddit posts), I intend to explore other NLP tools and techniques such as spaCy and Topic Modeling.  I will also use Latent Dirichlet Allocation (LDA to uncover) insights regarding the topics of the terrorist's motive and (LDA) model to classify terrorist attack modes based on a provided motive input, if possible.
+- A machine learning model is proposed to classify bombing (alternative knife; subject to tailor as more insights uncovered with EDA) attacks. It is hypothesized that bombing accounts for the highest casualties per attacks.  Such a model is expected to support intelligence analyst and alleviate their workload.
+
+- At this point of time, the proportion of class of interest is expected to be imbalanced; therefore, the guiding metric would be **F1** score and **area under the ROC curve**. The model will be benchmarked against the baseline of class proportion. Having utilized NLP techniques to build text classification models in Project 3(Web API and classification of Subreddit posts), I intend to explore other NLP tools and techniques such as spaCy and Topic Modeling.  I will also use Latent Dirichlet Allocation (LDA to uncover) insights regarding the topics of the terrorist's motive and (LDA) model to classify terrorist attack modes based on a provided motive input, if possible.
 
 - I will also review and propose recommendations on: 
   1. the features that influences the model's classifications for further fine-tuning of model
-  2. potential sources of additional external data :notebook: source that could improve the model's performance. 
+  
+  2. exploration of other modelling methods ​that could improve the model's performance. 
+  
+     
+  
+  Data source: The Global Terrorism Database (GTD) is an open-source database on terrorist attacks around the world from 1970 through 2017. It includes both domestic and international terrorist incidents, and more than 100 variables on the location, tactics, perpetrators, targets, and outcomes. The database is maintained by the "National Consortium for the Study of Terrorism and Responses to Terrorism (START), University of Maryland. (2018). Link for database: https://www.kaggle.com/START-UMD/gtd
 
 **Potential Challenges :warning:/ Mitigations & Considerations:**
 
