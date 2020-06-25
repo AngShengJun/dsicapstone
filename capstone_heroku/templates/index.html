@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 700px; 
+  background: #ccc;
+  padding: 20px;
+  text-align: justify;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  text-align: justify;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 700px; 
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+
+#myDIV {
+  width: 80%;
+  padding: 10px 0;
+  text-align: justify;
+  background-color: #f1f1f1;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<header>
+	<h3>Text Classifier to determine Terrorist Bombing Incidents</h3>
+</header>
+
+<section>
+	<nav>
+		<h4>Terrorism</h4>
+		<p>is defined as: <br>
+		<i>"The threatened or actual use of illegal force and violence by a non-state actor to attain
+		a political, economic, religious, or social goal through fear, coercion, or intimidation."</i>
+		- Global Terrorism Database <br> </p>
+	
+		<p>The Global Terrorism Database (GTD) is an open-source database on terrorist attacks around
+		the world from 1970 through 2017. It includes both domestic and international terrorist
+		incidents, and more than 100 variables on the location, tactics, perpetrators, targets,
+		and outcomes. The database is maintained by the ""National Consortium for the Study of 
+		Terrorism and Responses to Terrorism (START), University of Maryland (2018). </p>
+	
+		<p>Counter-terrorism relies on time-critical intel to decipher terrorist's intentions and
+		forms of attack. </p>
+	
+		<p>A classifier model is built to classify one of two forms of attack (bomb or non-bomb) based on the collected
+		intelligence - motive textual data.</p>
+		<p>Caveats: The current classifier model is a very simplistic one in that it classifies a terrorist attack mode
+		as 'bomb' or 'non-bomb' based solely on one form of intel (motive text).
+		Additional sources or forms of intel are not included, nor were political and social factors trends that could serve as
+		supporting sources of intelligence.</p>
+		
+	</nav>
+		
+	<article>
+		<h4>Try to beat the classifier!</h4>
+		
+		<p>Ten intel texts describing the terrorist's motives were curated from the GTD, of which five are attributed to actual bombing incidents.
+		Select one and determine if the attackmode will be bomb or non-bomb attack mode,
+		then click the submit button for model classification.</p>
+		
+		<form action="/predict_class" method="POST" >
+		<label for="motive">motive</label>
+			<select id="motive" name="motive" style="max-width:90%;">
+				<option value="the specific motive is unknown; however, sources noted that the targeted bookstore had links
+				to casa pound, a right-wing group.">
+				the specific motive is unknown; however, sources noted that the targeted bookstore had links to casa 
+				pound, a right-wing group.</option>
+				<option value="al-shabaab claimed responsibility for the incident and stated that the peace hotel was targeted
+				because many african leaders previously met there to collaborate on the current situation in somalia.">
+				al-shabaab claimed responsibility for the incident and stated that the peace hotel was targeted
+				because many african leaders previously met there to collaborate on the current situation in somalia.</option>
+				<option value="the specific motive is unknown; however, sources suspected that the attack was meant to distract
+				security forces from operations against the islamic state of iraq and the levant (isil) in mosul, iraq.">
+				the specific motive is unknown; however, sources suspected that the attack was meant to distract
+				security forces from operations against the islamic state of iraq and the levant (isil) in mosul, iraq.</option>
+				<option value="the specific motive is unknown; however, sources stated that the victims were attempting to
+				leave areas controlled by the islamic state of iraq and the levant (isil) at the time of the attack.">
+				the specific motive is unknown; however, sources stated that the victims were attempting to
+				leave areas controlled by the islamic state of iraq and the levant (isil) at the time of the attack.</option>
+				<option value="the taliban claimed responsibility for the incident and stated that the afghan police had
+				been orchestrating an operation against the taliban.">
+				the taliban claimed responsibility for the incident and stated that the afghan police had been orchestrating
+				an operation against the taliban.</option>
+				<option value="the specific motive is unknown; however, sources noted that a ransom was demanded in exchange
+				for the release of saifullah.">
+				the specific motive is unknown; however, sources noted that a ransom was demanded in exchange for the release
+				of saifullah.</option>
+				<option value="individuals tending toward savagery claimed responsibility for the incident and stated that
+				oscar landerretche was targeted for his offenses against earth.">
+				individuals tending toward savagery claimed responsibility for the incident and stated that oscar landerretche
+				was targeted "for his offenses against earth."</option>
+				<option value="the islamic state of iraq and the levant (isil) claimed responsibility for the incident and
+				stated that the attack was carried out in retaliation for turkish airstrikes against isil.">
+				the islamic state of iraq and the levant (isil) claimed responsibility for the incident and stated that the
+				attack was carried out in retaliation for turkish airstrikes against isil.</option>
+				<option value="anti-lgbt extremists claimed responsibility for the incident and spray-painted homophobic
+				slurs on the victim's vehicle.">
+				anti-lgbt extremists claimed responsibility for the incident and spray-painted homophobic slurs on the
+				victim's vehicle.</option>
+				<option value="maoists claimed responsibility for the incident and stated that thakur das mahto was a
+				police informant">
+				maoists claimed responsibility for the incident and stated that thakur das mahto was a police informant.</option>
+			</select>
+		<button style="margin:5px;" type="submit">Submit</button>
+		</form>
+	
+		{% if output %}
+		<b>Predicted Class:</b> {{ output }}
+		{% endif %}
+
+		<p>Click on the button below to reveal which are actual bombing incidents.</p>
+		<button style="margin:5px;" onclick="myFunction()">Which are actual bombing incidents? </button>
+		<div id="myDIV" style="display:none;">
+		The first five motive intel are linked to actual terrorist bombing incidents. The last five are non-bombing incidents. 
+		The model did not classify the first and the eighth motive text correctly. Did you manage to beat the classifier model at
+		classifying the various motive intel? 
+		</div>
+		<script>
+		function myFunction() {
+		var x = document.getElementById("myDIV");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+			}
+		}
+		</script>
+		
+	</article>
+</section>
+
+<footer>
+  <p>Piqued your curosity? Find out more here: <a href="https://github.com/AngShengJun/dsicapstone/tree/master/p02_probstat_data">Github capstone project</a></p>
+</footer>
+
+
+</body>
+</html>
