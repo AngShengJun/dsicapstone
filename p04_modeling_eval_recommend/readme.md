@@ -68,7 +68,7 @@ In the next part, topic modeling is discussed.
 
 ---
 
-## Topic Modeling
+## Topic Modeling :speech_balloon:
 
 Topic modelling was conducted on the train data set. The optimum number of topics was determined to be 42 topics, based on the coherence value to topics plot. 
 
@@ -124,7 +124,7 @@ When I started out on this project, incorporating LDA into the model workflow wa
 
 Thanks for reading, and hopefully, the work has provided you some ideas on how best to tackle your own NLP project. I believe in paying it forward; the code hosted on github is intended to be shared and remixed. I appreciate attribution should you like to replicate the codes.
 
-[Back to overview](https://github.com/AngShengJun/dsicapstone)
+[Next](https://github.com/AngShengJun/dsicapstone/tree/master/p05_deployment)
 
 ---
 
